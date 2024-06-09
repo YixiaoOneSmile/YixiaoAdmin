@@ -16,6 +16,6 @@ namespace YixiaoAdmin.EntityFrameworkCore
 
     public class DbConfig
     {
-       public  static readonly string ConnectString = "Server=43.138.101.72;Database=YixiaoAdmin;User ID=sa;Password=asqmkj147@";
+       public  static readonly string ConnectString = "Server=[Your Database Server Adress];Database=YixiaoAdmin;User ID=[Your Database UserName];Password=[Your Database Password]";
     }
 }
