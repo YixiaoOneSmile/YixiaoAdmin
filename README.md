@@ -1,14 +1,14 @@
 ### 5 分钟快速创建应用后台管理系统
 
-欢迎使用辽科大启梦团队快速开发脚手架 YixiaoAdmin，通过阅读以下内容，你可以快速熟悉 YixiaoAdmin，并用极短的时间快速创建属于自己应用的后台管理系统。
+欢迎使用快速开发脚手架 YixiaoAdmin，通过阅读以下内容，你可以快速熟悉 YixiaoAdmin，并用极短的时间快速创建属于自己应用的后台管理系统。
 
 ### 关于 YixiaoAdmin
 
-YixiaoAdmin 是一套基于 Vue2.0、.Net Core6.0 的轻量级前后端分离的后台管理系统脚手架。其中.Net Core3.1 部分集成了 ORM 框架 EFCore、身份认证框架 IdentityServer4、接口文档框架 Swagger、Excel 操作框架 EPPlus，并且通过 T4 模板快速生成相关代码与接口，减少重复工作，极大简化了开发过程，有效缩短开发周期；前端采用 Vue2.0，集成了 Vuex、ElementUI、Echart，相关增删改页面均可由代码生成器生成。
+YixiaoAdmin 是一套基于 Vue2.0、.Net Core6.0 的轻量级前后端分离的后台管理系统脚手架。其中.Net Core6.0 部分集成了 ORM 框架 EFCore、身份认证框架 IdentityServer4、接口文档框架 Swagger、Excel 操作框架 EPPlus，并且通过 T4 模板快速生成相关代码与接口，减少重复工作，极大简化了开发过程，有效缩短开发周期；前端采用 Vue2.0，集成了 Vuex、ElementUI、Echart，相关增删改页面均可由代码生成器生成。
 
 ### 环境依赖
 
-前端依赖于 Node.Js 环境
+前端依赖于 Node.Js 16.18 环境（建议使用 NVM 管理 Node 版本）
 后台依赖于 .NetCore 6.0
 
 ### 目录结构说明
@@ -96,7 +96,10 @@ YixiaoAdmin 是一套基于 Vue2.0、.Net Core6.0 的轻量级前后端分离的
 
 #### 7.启动项目
 
-#### 8.发布项目
+前端 cd src/vue
+npm run serve
+
+后端使用 VS 运行 YixiaoAdmin.WebAPI 项目
 
 ### 更多
 
