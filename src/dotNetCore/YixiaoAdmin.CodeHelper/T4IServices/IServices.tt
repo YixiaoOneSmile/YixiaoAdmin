@@ -1,0 +1,55 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ assembly name="$(SolutionDir)\YixiaoAdmin.Models\bin\Debug\netstandard2.0\YixiaoAdmin.Models.dll" #>
+<#@ import namespace="YixiaoAdmin.Models" #>
+<#@ output extension=".cs" #>
+<#@include file="$(SolutionDir)\packages\MultipleOutputHelper.ttinclude"#> 
+
+<#
+    //var OutputPath1 = Path.GetDirectoryName(Host.TemplateFile)+"\\work";
+    var OutputPath1 = Path.GetDirectoryName(Host.TemplateFile);
+    if (!Directory.Exists(OutputPath1))
+    {
+        Directory.CreateDirectory(OutputPath1);
+    }
+    var manager = new Manager(Host, GenerationEnvironment, true) { OutputPath = OutputPath1 }; 
+    var assembly = typeof(IEntity).Assembly.GetTypes().AsEnumerable()
+        .Where(x => typeof(IEntity).IsAssignableFrom(x) && !x.IsAbstract && !x.IsInterface).ToList();
+    foreach(var type in assembly)
+    {
+        // 定义输出文件
+	    manager.StartBlock("I"+type.Name+"Services.cs");
+#>
+/****************************************************
+ * 本文件由T4模板生成，请将本文件复制到YixiaoAdmin.IServices类库中使用
+ * 文件名：I<#=type.Name #>Services.cs
+ * 生成时间：<#=DateTime.Now #>
+****************************************************/
+
+using YixiaoAdmin.Models;
+using YixiaoAdmin.Common;
+using YixiaoAdmin.Models.ViewModels;
+using System.Threading.Tasks;
+
+namespace YixiaoAdmin.IServices
+{
+
+    public partial interface  I<#=type.Name #>Services:IBaseServices<<#=type.Name #>>
+    {
+        /// <summary>
+        /// 分页查询拓展
+        /// </summary>
+        /// <param name="queryPageModel">分页搜索模型</param>
+        /// <returns></returns>
+        Task<PagesResponse> QueryPagesExpand(QueryPageModel queryPageModel);
+    }
+}
+<#
+     // 结束输出文件
+    manager.EndBlock();
+    } 
+    // 执行编译
+    manager.Process(true);  
+
+#>

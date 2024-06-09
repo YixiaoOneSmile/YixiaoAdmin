@@ -1,0 +1,111 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ assembly name="System.Xml.ReaderWriter" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Xml.XPath" #>
+<#@ import namespace="System.ComponentModel" #>
+<#@ import namespace="YixiaoAdmin.Models" #>
+<#@ assembly name="$(SolutionDir)\YixiaoAdmin.Models\bin\Debug\netstandard2.0\YixiaoAdmin.Models.dll" #>
+<#@ output extension=".cs" #>
+<#@ include file="$(SolutionDir)\packages\MultipleOutputHelper.ttinclude"#> 
+
+<#
+    //var OutputPath1 = Path.GetDirectoryName(Host.TemplateFile)+"\\work";
+    var OutputPath1 = Path.GetDirectoryName(Host.TemplateFile);
+    if (!Directory.Exists(OutputPath1))
+    {
+        Directory.CreateDirectory(OutputPath1);
+    }
+    var manager = new Manager(Host, GenerationEnvironment, true) { OutputPath = OutputPath1 }; 
+    var assembly = typeof(IEntity).Assembly.GetTypes().AsEnumerable()
+        .Where(x => typeof(IEntity).IsAssignableFrom(x) && !x.IsAbstract && !x.IsInterface).ToList();
+    
+    // Load XML documentation
+    var xmlPath = Path.Combine(Path.GetDirectoryName(Host.TemplateFile), @$"..\..\YixiaoAdmin.Models\bin\Debug\netstandard2.0\YixiaoAdmin.Models.xml");
+    var xmlDoc = new XPathDocument(xmlPath);
+    var navigator = xmlDoc.CreateNavigator();
+    
+    foreach(var type in assembly)
+    {
+        // 定义输出文件
+        manager.StartBlock(type.Name+"Dto.cs");
+#>
+/***********************************************************************
+ * 本文件由T4模板生成，请将本文件复制到YixiaoAdmin.Model/ViewModels文件夹中使用
+ * 文件名：<#=type.Name #>Management.vue
+ * 生成时间：<#=DateTime.Now #>
+************************************************************************/
+using System.Collections.Generic;
+using System.ComponentModel;
+using System;
+
+namespace YixiaoAdmin.Models.ViewModels
+{
+    <#
+        // Get class documentation
+        var typeMemberName = $"T:{type.FullName}";
+        var typeSummary = GetXmlDocumentation(navigator, typeMemberName);
+    #>
+
+    public class <#=type.Name #>Dto : ViewDto
+    {
+    <#
+        foreach (var p in type.GetProperties())
+        {
+            // Get property documentation
+            var propertyMemberName = $"P:{type.FullName}.{p.Name}";
+            var propertySummary = GetXmlDocumentation(navigator, propertyMemberName);
+    #>
+
+    [Description("<#= propertySummary #>")]
+    public <#= GetTypeNameString(p.PropertyType) #> <#= p.Name #> { get; set; }
+    <#
+        }
+    #>
+    }
+}  
+<#
+    // 结束输出文件
+    manager.EndBlock();
+    } 
+    // 执行编译
+    manager.Process(true);  
+
+    string GetTypeNameString(Type type) 
+    { 
+        if(type== Type.GetType("System.String"))
+        {
+            return "string";
+        }
+        else if(type== Type.GetType("System.Int32"))
+        {
+            return "int";
+        }
+        else if(type== Type.GetType("System.Int32"))
+        {
+            return "int";
+        }
+        else if(type== Type.GetType("int?"))
+        {
+            return "int?";
+        }
+        else if(type.IsGenericType)
+        {
+            Type[] genericArgTypes = type.GetGenericArguments();
+            return $"List<{genericArgTypes[0].Name.ToString()}>" ;
+        }
+        else
+        {
+            return type.Name.ToString();
+        } 
+    }
+
+    string GetXmlDocumentation(XPathNavigator navigator, string memberName)
+    {
+        var node = navigator.SelectSingleNode($"/doc/members/member[@name='{memberName}']/summary");
+        return node?.Value.Trim() ?? "No documentation available.";
+    }
+#>

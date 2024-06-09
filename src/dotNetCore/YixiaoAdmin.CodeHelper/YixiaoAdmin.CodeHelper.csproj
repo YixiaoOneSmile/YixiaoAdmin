@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YixiaoAdmin.Models\YixiaoAdmin.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="T4Controllers\ControllersTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ControllersTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="T4Dtos\ViewModelTemplate.tt">
+      <LastGenOutput>ViewModelTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="T4IServices\IServices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IServices.cs</LastGenOutput>
+    </None>
+    <None Update="T4Services\Services.tt">
+      <LastGenOutput>Services.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="T4Views\Axios\api.js">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>api.tt</DependentUpon>
+    </None>
+    <None Update="T4Views\Axios\api.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>api.js</LastGenOutput>
+    </None>
+    <None Update="T4Views\Vue-Router\index.js">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>index.tt</DependentUpon>
+    </None>
+    <None Update="T4Views\Vue-Router\index.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>index.js</LastGenOutput>
+    </None>
+    <None Update="T4Views\ViewTemplate.tt">
+      <LastGenOutput>ViewTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="T4Controllers\ControllersTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ControllersTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4Dtos\ViewModelTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ViewModelTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4IServices\IServices.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IServices.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4Services\Services.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Services.tt</DependentUpon>
+    </Compile>
+    <Compile Update="T4Views\ViewTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ViewTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

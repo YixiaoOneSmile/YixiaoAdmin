@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YixiaoAdmin.Common\YixiaoAdmin.Common.csproj" />
+    <ProjectReference Include="..\YixiaoAdmin.Models\YixiaoAdmin.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="T4\IServices.cs">
+      <DependentUpon>IServices.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="T4\IServices.tt">
+      <LastGenOutput>IServices.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Repository.tt">
+      <LastGenOutput>Repository.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

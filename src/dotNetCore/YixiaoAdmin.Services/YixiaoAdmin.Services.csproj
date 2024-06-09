@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <WarningLevel>1</WarningLevel>
+    <OutputPath>..\YixiaoAdmin.WebApi\bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="6.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YixiaoAdmin.Common\YixiaoAdmin.Common.csproj" />
+    <ProjectReference Include="..\YixiaoAdmin.IRepository\YixiaoAdmin.IRepository.csproj" />
+    <ProjectReference Include="..\YixiaoAdmin.IService\YixiaoAdmin.IServices.csproj" />
+    <ProjectReference Include="..\YixiaoAdmin.Models\YixiaoAdmin.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="T4\Services.tt">
+      <LastGenOutput>Services.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="T4\Services.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Services.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

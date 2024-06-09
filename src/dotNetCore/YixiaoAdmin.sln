@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YixiaoAdmin.WebApi", "YixiaoAdmin.WebApi\YixiaoAdmin.WebApi.csproj", "{E45E3DAB-AA82-4BB4-89C2-6BE7C6CD6E15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YixiaoAdmin.Models", "YixiaoAdmin.Models\YixiaoAdmin.Models.csproj", "{7CA81182-8315-4037-87EB-881124FDA377}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YixiaoAdmin.IRepository", "YixiaoAdmin.IRepository\YixiaoAdmin.IRepository.csproj", "{D9612A62-6571-4863-A408-15F82746EABD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YixiaoAdmin.Repository", "YixiaoAdmin.Respository\YixiaoAdmin.Repository.csproj", "{01FC818A-7A63-40CA-A0F7-81B963290288}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YixiaoAdmin.IServices", "YixiaoAdmin.IService\YixiaoAdmin.IServices.csproj", "{E191B489-F860-4D1C-8935-DF74968B9E0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YixiaoAdmin.Services", "YixiaoAdmin.Services\YixiaoAdmin.Services.csproj", "{61264C52-A517-497B-A48D-2DFF3D593E17}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YixiaoAdmin.CodeHelper", "YixiaoAdmin.CodeHelper\YixiaoAdmin.CodeHelper.csproj", "{FA08102B-2158-4595-B1CE-301B744AF039}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{A1B09BE5-D073-444C-9B30-CC88291AD6E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YixiaoAdmin.EntityFrameworkCore", "YixiaoAdmin.EntityFrameworkCore\YixiaoAdmin.EntityFrameworkCore.csproj", "{2BECD000-8FC1-4F62-925A-E13B63DC3F5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YixiaoAdmin.Common", "YixiaoAdmin.Common\YixiaoAdmin.Common.csproj", "{605108FF-A6B3-4578-868B-99776D5CE75E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YixiaoAdmin.Test", "YixiaoAdmin.Test\YixiaoAdmin.Test.csproj", "{611ABEA5-B5FF-42F9-BEA4-EE3666B6332C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E45E3DAB-AA82-4BB4-89C2-6BE7C6CD6E15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E45E3DAB-AA82-4BB4-89C2-6BE7C6CD6E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E45E3DAB-AA82-4BB4-89C2-6BE7C6CD6E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E45E3DAB-AA82-4BB4-89C2-6BE7C6CD6E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA81182-8315-4037-87EB-881124FDA377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA81182-8315-4037-87EB-881124FDA377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA81182-8315-4037-87EB-881124FDA377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA81182-8315-4037-87EB-881124FDA377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9612A62-6571-4863-A408-15F82746EABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9612A62-6571-4863-A408-15F82746EABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9612A62-6571-4863-A408-15F82746EABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9612A62-6571-4863-A408-15F82746EABD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01FC818A-7A63-40CA-A0F7-81B963290288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01FC818A-7A63-40CA-A0F7-81B963290288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01FC818A-7A63-40CA-A0F7-81B963290288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01FC818A-7A63-40CA-A0F7-81B963290288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E191B489-F860-4D1C-8935-DF74968B9E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E191B489-F860-4D1C-8935-DF74968B9E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E191B489-F860-4D1C-8935-DF74968B9E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E191B489-F860-4D1C-8935-DF74968B9E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61264C52-A517-497B-A48D-2DFF3D593E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61264C52-A517-497B-A48D-2DFF3D593E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61264C52-A517-497B-A48D-2DFF3D593E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61264C52-A517-497B-A48D-2DFF3D593E17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA08102B-2158-4595-B1CE-301B744AF039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA08102B-2158-4595-B1CE-301B744AF039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA08102B-2158-4595-B1CE-301B744AF039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA08102B-2158-4595-B1CE-301B744AF039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BECD000-8FC1-4F62-925A-E13B63DC3F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BECD000-8FC1-4F62-925A-E13B63DC3F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BECD000-8FC1-4F62-925A-E13B63DC3F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BECD000-8FC1-4F62-925A-E13B63DC3F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{605108FF-A6B3-4578-868B-99776D5CE75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{605108FF-A6B3-4578-868B-99776D5CE75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{605108FF-A6B3-4578-868B-99776D5CE75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{605108FF-A6B3-4578-868B-99776D5CE75E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{611ABEA5-B5FF-42F9-BEA4-EE3666B6332C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611ABEA5-B5FF-42F9-BEA4-EE3666B6332C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611ABEA5-B5FF-42F9-BEA4-EE3666B6332C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611ABEA5-B5FF-42F9-BEA4-EE3666B6332C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FA08102B-2158-4595-B1CE-301B744AF039} = {A1B09BE5-D073-444C-9B30-CC88291AD6E9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCAA46E2-848E-42DE-9104-0AB74C5596BD}
+	EndGlobalSection
+EndGlobal

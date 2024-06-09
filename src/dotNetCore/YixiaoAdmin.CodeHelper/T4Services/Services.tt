@@ -1,0 +1,97 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ assembly name="$(SolutionDir)\YixiaoAdmin.Models\bin\Debug\netstandard2.0\YixiaoAdmin.Models.dll" #>
+<#@ import namespace="YixiaoAdmin.Models" #>
+<#@ output extension=".cs" #>
+<#@include file="$(SolutionDir)\packages\MultipleOutputHelper.ttinclude"#> 
+
+<#
+    //var OutputPath1 = Path.GetDirectoryName(Host.TemplateFile)+"\\work";
+    var OutputPath1 = Path.GetDirectoryName(Host.TemplateFile);
+    if (!Directory.Exists(OutputPath1))
+    {
+        Directory.CreateDirectory(OutputPath1);
+    }
+    var manager = new Manager(Host, GenerationEnvironment, true) { OutputPath = OutputPath1 }; 
+    var assembly = typeof(IEntity).Assembly.GetTypes().AsEnumerable()
+        .Where(x => typeof(IEntity).IsAssignableFrom(x) && !x.IsAbstract && !x.IsInterface).ToList();
+    foreach(var type in assembly)
+    {
+        // 定义输出文件
+	    manager.StartBlock(type.Name+"Services.cs");
+#>
+/****************************************************
+ * 本文件由T4模板生成，请将本文件复制到YixiaoAdmin.Services类库中使用
+ * 文件名：<#=type.Name #>Services.cs
+ * 生成时间：<#=DateTime.Now #>
+****************************************************/
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using YixiaoAdmin.IRepository;
+using YixiaoAdmin.IServices;
+using YixiaoAdmin.Models;
+using YixiaoAdmin.Models.ViewModels;
+using YixiaoAdmin.Common;
+
+namespace YixiaoAdmin.Services
+{
+
+    public partial class  <#=type.Name #>Services:BaseServices<<#=type.Name #>>, I<#=type.Name #>Services
+    {
+       public async Task<PagesResponse> QueryPagesExpand(QueryPageModel queryPageModel)
+        {
+             //自定义分页Response
+            PagesResponse pagesResponse = new PagesResponse();
+            //初始化查询表达式
+            Expression<Func<<#=type.Name #>, bool>> whereExpression = PredicateBuilder.True<<#=type.Name #>>();
+
+            foreach (QueryFieldModel item in queryPageModel.Query)
+            {
+                //根据属性名获取属性
+                var property = typeof(<#=type.Name #>).GetProperty(item.QueryField);
+                if (property == null)
+                {
+                    continue;
+                }
+                if (item.QueryStr == null || item.QueryStr == "")
+                {
+                    continue;
+                }
+                if (item.QueryField == "Name")
+                {
+
+                    whereExpression = PredicateBuilder.And(whereExpression, (x) => x.Name == item.QueryStr);
+                }
+
+                else if (item.QueryField == "CreateTime")
+                {
+                    whereExpression = PredicateBuilder.And(whereExpression, (x) => x.CreateTime.Date == Convert.ToDateTime(item.QueryStr.Trim())); 
+                }
+
+            }
+            //获取查询语句
+            var query = await _<#=type.Name #>Repository.Query(whereExpression, queryPageModel.Orderby, queryPageModel.CurrentPage, queryPageModel.PageNumber);
+
+            //添加联合查询条件
+            //query = query.Include(x => x.SubOrder).ThenInclude(x=>x.Order);
+
+            pagesResponse.Success(query.ToList());
+            pagesResponse.count = (await _<#=type.Name #>Repository.Query(whereExpression)).Count();
+            return pagesResponse;
+           
+        }
+    }
+}
+<#
+     // 结束输出文件
+    manager.EndBlock();
+    } 
+    // 执行编译
+    manager.Process(true);  
+
+#>
