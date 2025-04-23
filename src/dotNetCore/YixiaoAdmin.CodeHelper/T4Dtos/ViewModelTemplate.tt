@@ -36,7 +36,6 @@
 /***********************************************************************
  * 本文件由T4模板生成，请将本文件复制到YixiaoAdmin.Model/ViewModels文件夹中使用
  * 文件名：<#=type.Name #>Management.vue
- * 生成时间：<#=DateTime.Now #>
 ************************************************************************/
 using System.Collections.Generic;
 using System.ComponentModel;

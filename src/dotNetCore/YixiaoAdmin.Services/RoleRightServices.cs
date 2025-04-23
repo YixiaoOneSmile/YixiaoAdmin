@@ -1,7 +1,6 @@
 /****************************************************
  * 本文件由T4模板生成，请将本文件复制到YixiaoAdmin.Services类库中使用
  * 文件名：RoleRightServices.cs
- * 生成时间：12/22/2020 21:29:43
 ****************************************************/
 using System;
 using System.Collections.Generic;
